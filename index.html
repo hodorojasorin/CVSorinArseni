@@ -8,48 +8,91 @@
 </head>
 <body>
 
+  <!-- Sprite SVG: iconițe monocrome (stil Feather) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+      <circle cx="12" cy="7" r="4"/>
+    </symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24">
+      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="m22 6-10 7L2 6"/>
+    </symbol>
+    <symbol id="i-link" viewBox="0 0 24 24">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+      <path d="M15 3h6v6"/>
+      <path d="M10 14 21 3"/>
+    </symbol>
+    <symbol id="i-chevron-up" viewBox="0 0 24 24">
+      <polyline points="18 15 12 9 6 15"/>
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M2 12h20"/>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    </symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
+      <path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
+      <path d="M3 16v3a2 2 0 0 0 2 2h3"/>
+      <path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
+    </symbol>
+  </svg>
+
   <!-- Desktop -->
   <div class="desktop" id="desktop">
+
+    <span class="version">v1.2</span>
 
     <!-- Iconițe pe desktop -->
     <div class="desktop-icons">
       <button class="icon" data-window="win-despre">
-        <span class="icon-img">👤</span>
-        <span class="icon-label">Despre mine</span>
+        <svg class="icon-img"><use href="#i-user"/></svg>
+        <span class="icon-label" data-i18n="about">Despre mine</span>
       </button>
       <button class="icon" data-window="win-proiecte">
-        <span class="icon-img">📁</span>
-        <span class="icon-label">Proiectele mele</span>
+        <svg class="icon-img"><use href="#i-folder"/></svg>
+        <span class="icon-label" data-i18n="projects">Proiectele mele</span>
       </button>
       <button class="icon" data-window="win-bibl">
-        <span class="icon-img">📚</span>
+        <svg class="icon-img"><use href="#i-book"/></svg>
         <span class="icon-label">bibl.ceiti.md</span>
       </button>
       <button class="icon" data-window="win-contact">
-        <span class="icon-img">✉️</span>
-        <span class="icon-label">Contact</span>
+        <svg class="icon-img"><use href="#i-mail"/></svg>
+        <span class="icon-label" data-i18n="contact">Contact</span>
       </button>
     </div>
 
     <!-- Fereastra: Despre mine -->
-    <section class="window" id="win-despre" data-title="Despre mine" style="top: 80px; left: 180px; width: 460px;">
+    <section class="window" id="win-despre" data-title-key="about" style="top: 70px; left: 200px; width: 520px;">
       <header class="window-titlebar">
-        <span class="window-title">👤 Despre mine</span>
+        <span class="window-title">
+          <svg class="title-icon"><use href="#i-user"/></svg>
+          <span data-i18n="about">Despre mine</span>
+        </span>
         <div class="window-controls">
-          <button class="btn-minimize" title="Minimizează">—</button>
-          <button class="btn-close" title="Închide">✕</button>
+          <button class="btn-minimize" title="Minimize">–</button>
+          <button class="btn-maximize" title="Fullscreen">□</button>
+          <button class="btn-close" title="Close">×</button>
         </div>
       </header>
       <div class="window-body">
         <h1>Sorin Arseni</h1>
-        <p class="subtitle">Web Developer în devenire</p>
-        <p>
-          Salut! Sunt Sorin, pasionat de dezvoltare web. Lucrez cu
-          <strong>HTML</strong>, <strong>CSS</strong> și <strong>JavaScript</strong>
-          și învăț în fiecare zi ceva nou. Acest site este el însuși un proiect:
-          un portofoliu static, construit fără niciun framework.
+        <p class="subtitle" data-i18n="about.subtitle">Web Developer în devenire</p>
+        <p data-i18n="about.p1">
+          Salut! Sunt Sorin, pasionat de dezvoltare web. Lucrez cu HTML, CSS și
+          JavaScript și învăț în fiecare zi ceva nou. Acest site este el însuși
+          un proiect: un portofoliu static, construit fără niciun framework.
         </p>
-        <h2>Competențe</h2>
+        <h2 data-i18n="skills">Competențe</h2>
         <ul class="skills">
           <li>HTML5</li>
           <li>CSS3</li>
@@ -60,43 +103,51 @@
     </section>
 
     <!-- Fereastra: Proiectele mele -->
-    <section class="window" id="win-proiecte" data-title="Proiectele mele" style="top: 130px; left: 320px; width: 440px;">
+    <section class="window" id="win-proiecte" data-title-key="projects" style="top: 120px; left: 340px; width: 460px;">
       <header class="window-titlebar">
-        <span class="window-title">📁 Proiectele mele</span>
+        <span class="window-title">
+          <svg class="title-icon"><use href="#i-folder"/></svg>
+          <span data-i18n="projects">Proiectele mele</span>
+        </span>
         <div class="window-controls">
-          <button class="btn-minimize" title="Minimizează">—</button>
-          <button class="btn-close" title="Închide">✕</button>
+          <button class="btn-minimize" title="Minimize">–</button>
+          <button class="btn-maximize" title="Fullscreen">□</button>
+          <button class="btn-close" title="Close">×</button>
         </div>
       </header>
       <div class="window-body">
         <div class="folder-view">
           <button class="icon icon-in-folder" data-window="win-bibl">
-            <span class="icon-img">📚</span>
+            <svg class="icon-img"><use href="#i-book"/></svg>
             <span class="icon-label">bibl.ceiti.md</span>
           </button>
         </div>
-        <p class="folder-hint">1 proiect · mai multe în curând…</p>
+        <p class="folder-hint" data-i18n="projects.hint">1 proiect · mai multe în curând…</p>
       </div>
     </section>
 
     <!-- Fereastra: bibl.ceiti.md -->
-    <section class="window" id="win-bibl" data-title="bibl.ceiti.md" style="top: 180px; left: 460px; width: 500px;">
+    <section class="window" id="win-bibl" data-title-key="bibl" style="top: 170px; left: 480px; width: 560px;">
       <header class="window-titlebar">
-        <span class="window-title">📚 bibl.ceiti.md</span>
+        <span class="window-title">
+          <svg class="title-icon"><use href="#i-book"/></svg>
+          <span>bibl.ceiti.md</span>
+        </span>
         <div class="window-controls">
-          <button class="btn-minimize" title="Minimizează">—</button>
-          <button class="btn-close" title="Închide">✕</button>
+          <button class="btn-minimize" title="Minimize">–</button>
+          <button class="btn-maximize" title="Fullscreen">□</button>
+          <button class="btn-close" title="Close">×</button>
         </div>
       </header>
       <div class="window-body">
-        <h1>Biblioteca CEITI</h1>
-        <p class="subtitle">Primul meu proiect web</p>
-        <p>
+        <h1 data-i18n="bibl.title">Biblioteca CEITI</h1>
+        <p class="subtitle" data-i18n="bibl.subtitle">Primul meu proiect web</p>
+        <p data-i18n="bibl.p1">
           Site-ul bibliotecii Centrului de Excelență în Informatică și
           Tehnologii Informaționale (CEITI). Primul proiect real la care am
           lucrat — o platformă web pentru biblioteca instituției.
         </p>
-        <h2>Tehnologii</h2>
+        <h2 data-i18n="tech">Tehnologii</h2>
         <ul class="skills">
           <li>HTML</li>
           <li>CSS</li>
@@ -104,27 +155,31 @@
         </ul>
         <p>
           <a class="project-link" href="https://bibl.ceiti.md" target="_blank" rel="noopener">
-            🔗 Vizitează bibl.ceiti.md
+            <svg class="link-icon"><use href="#i-link"/></svg>
+            <span data-i18n="bibl.visit">Vizitează bibl.ceiti.md</span>
           </a>
         </p>
       </div>
     </section>
 
     <!-- Fereastra: Contact -->
-    <section class="window" id="win-contact" data-title="Contact" style="top: 230px; left: 240px; width: 400px;">
+    <section class="window" id="win-contact" data-title-key="contact" style="top: 220px; left: 260px; width: 420px;">
       <header class="window-titlebar">
-        <span class="window-title">✉️ Contact</span>
+        <span class="window-title">
+          <svg class="title-icon"><use href="#i-mail"/></svg>
+          <span data-i18n="contact">Contact</span>
+        </span>
         <div class="window-controls">
-          <button class="btn-minimize" title="Minimizează">—</button>
-          <button class="btn-close" title="Închide">✕</button>
+          <button class="btn-minimize" title="Minimize">–</button>
+          <button class="btn-maximize" title="Fullscreen">□</button>
+          <button class="btn-close" title="Close">×</button>
         </div>
       </header>
       <div class="window-body">
-        <h1>Hai să vorbim</h1>
-        <p>Mă găsești la:</p>
+        <h1 data-i18n="contact.title">Hai să vorbim</h1>
+        <p data-i18n="contact.p">Mă găsești la:</p>
         <ul class="contact-list">
-          <li>📧 <a href="mailto:okarsenisorin@gmail.com">okarsenisorin@gmail.com</a></li>
-          <li>💻 <a href="https://github.com/hodorojasorin" target="_blank" rel="noopener">github.com/hodorojasorin</a></li>
+          <li><a href="mailto:contact@sorinarseni.com">contact@sorinarseni.com</a></li>
         </ul>
       </div>
     </section>
@@ -133,9 +188,30 @@
 
   <!-- Taskbar -->
   <footer class="taskbar">
-    <button class="start-button" id="start-button">⭐ Start</button>
+    <button class="start-button" id="start-button">Start</button>
     <div class="taskbar-windows" id="taskbar-windows"></div>
-    <div class="taskbar-clock" id="taskbar-clock">--:--</div>
+    <div class="taskbar-clock" id="taskbar-clock">–</div>
+    <div class="tray">
+      <button class="tray-toggle" id="tray-toggle" title="Options">
+        <svg class="tray-icon"><use href="#i-chevron-up"/></svg>
+      </button>
+      <!-- Meniul care se deschide în sus -->
+      <div class="tray-menu" id="tray-menu" hidden>
+        <button class="tray-item" id="tray-lang-toggle">
+          <svg class="tray-icon"><use href="#i-globe"/></svg>
+          <span data-i18n="tray.lang">Limbă</span>
+        </button>
+        <div class="tray-submenu" id="lang-options" hidden>
+          <button data-lang="ro">Română</button>
+          <button data-lang="en">English</button>
+          <button data-lang="it">Italiano</button>
+        </div>
+        <button class="tray-item" id="tray-fullscreen">
+          <svg class="tray-icon"><use href="#i-expand"/></svg>
+          <span data-i18n="tray.fullscreen">Ecran complet</span>
+        </button>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>

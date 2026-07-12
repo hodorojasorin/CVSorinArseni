@@ -1,4 +1,4 @@
-/* ===== Reset & bază ===== */
+/* ===== Reset & bază — temă strict alb-negru ===== */
 * {
   margin: 0;
   padding: 0;
@@ -7,17 +7,18 @@
 
 :root {
   --taskbar-height: 48px;
-  --accent: #4f8cff;
-  --window-bg: #ffffff;
-  --titlebar-bg: linear-gradient(180deg, #3a3f4b, #2b2f38);
-  --text: #222;
+  --black: #111111;
+  --white: #ffffff;
+  --gray-light: #f2f2f2;
+  --gray-mid: #d4d4d4;
+  --gray-text: #666666;
 }
 
 html, body {
   height: 100%;
   overflow: hidden;
   font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
-  color: var(--text);
+  color: var(--black);
   user-select: none;
 }
 
@@ -25,11 +26,21 @@ html, body {
 .desktop {
   position: relative;
   height: calc(100vh - var(--taskbar-height));
-  background:
-    radial-gradient(ellipse at 20% 20%, rgba(79, 140, 255, 0.35), transparent 55%),
-    radial-gradient(ellipse at 80% 75%, rgba(140, 82, 255, 0.30), transparent 55%),
-    linear-gradient(160deg, #10141f 0%, #1b2233 55%, #232c45 100%);
+  background: var(--white);
+  background-image: radial-gradient(circle, var(--gray-mid) 1px, transparent 1px);
+  background-size: 28px 28px;
   overflow: hidden;
+}
+
+/* Versiune — colț dreapta sus */
+.version {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 11px;
+  color: var(--gray-text);
+  letter-spacing: 0.5px;
+  z-index: 1;
 }
 
 /* ===== Iconițe desktop ===== */
@@ -39,7 +50,7 @@ html, body {
   left: 24px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
   z-index: 1;
 }
 
@@ -47,45 +58,48 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  width: 92px;
-  padding: 10px 4px;
+  gap: 8px;
+  width: 96px;
+  padding: 12px 6px;
   background: transparent;
   border: 1px solid transparent;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  color: #fff;
+  color: var(--black);
 }
 
 .icon:hover,
 .icon:focus-visible {
-  background: rgba(255, 255, 255, 0.10);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: var(--gray-light);
+  border-color: var(--black);
   outline: none;
 }
 
 .icon-img {
-  font-size: 40px;
-  line-height: 1;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  width: 36px;
+  height: 36px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .icon-label {
   font-size: 12px;
+  font-weight: 500;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   word-break: break-word;
 }
 
 /* ===== Ferestre ===== */
 .window {
   position: absolute;
-  min-width: 320px;
-  max-width: 90vw;
-  background: var(--window-bg);
-  border-radius: 10px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  min-width: 340px;
+  max-width: 92vw;
+  background: var(--white);
+  border: 2px solid var(--black);
+  box-shadow: 6px 6px 0 rgba(17, 17, 17, 0.9);
   display: none;
   flex-direction: column;
   overflow: hidden;
@@ -93,22 +107,39 @@ html, body {
 
 .window.open {
   display: flex;
-  animation: window-open 0.18s ease-out;
-}
-
-.window.focused {
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.65);
+  animation: window-open 0.16s ease-out;
 }
 
 @keyframes window-open {
   from {
     opacity: 0;
-    transform: scale(0.95) translateY(8px);
+    transform: scale(0.97);
   }
   to {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: scale(1);
   }
+}
+
+/* Fullscreen */
+.window.maximized {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100%;
+  max-width: 100vw;
+  box-shadow: none;
+  border: none;
+  border-bottom: 2px solid var(--black);
+}
+
+.window.maximized .window-body {
+  max-height: none;
+  flex: 1;
+}
+
+.window.maximized .window-titlebar {
+  cursor: default;
 }
 
 .window-titlebar {
@@ -116,9 +147,10 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 8px 12px;
-  background: var(--titlebar-bg);
-  color: #eee;
+  background: var(--black);
+  color: var(--white);
   cursor: grab;
+  touch-action: none; /* permite drag cu degetul, fără scroll */
 }
 
 .window-titlebar:active {
@@ -126,8 +158,21 @@ html, body {
 }
 
 .window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 13px;
   font-weight: 600;
+}
+
+.title-icon {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .window-controls {
@@ -138,25 +183,22 @@ html, body {
 .window-controls button {
   width: 26px;
   height: 22px;
-  border: none;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #eee;
-  font-size: 12px;
+  border: 1px solid var(--white);
+  border-radius: 0;
+  background: var(--black);
+  color: var(--white);
+  font-size: 13px;
+  line-height: 1;
   cursor: pointer;
 }
 
 .window-controls button:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.window-controls .btn-close:hover {
-  background: #e0443e;
-  color: #fff;
+  background: var(--white);
+  color: var(--black);
 }
 
 .window-body {
-  padding: 20px 22px;
+  padding: 22px 24px;
   max-height: 60vh;
   overflow-y: auto;
   user-select: text;
@@ -168,8 +210,12 @@ html, body {
 }
 
 .window-body h2 {
-  font-size: 15px;
-  margin: 16px 0 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 18px 0 8px;
+  border-bottom: 1px solid var(--black);
+  padding-bottom: 4px;
 }
 
 .window-body p {
@@ -179,7 +225,7 @@ html, body {
 }
 
 .subtitle {
-  color: #777;
+  color: var(--gray-text);
   font-size: 13px !important;
   margin-bottom: 14px !important;
 }
@@ -194,10 +240,9 @@ html, body {
 }
 
 .skills li {
-  background: #eef3ff;
-  color: #2b56b5;
-  border: 1px solid #d3e0ff;
-  border-radius: 999px;
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--black);
   padding: 4px 12px;
   font-size: 12px;
   font-weight: 600;
@@ -210,40 +255,45 @@ html, body {
   gap: 12px;
 }
 
-.icon-in-folder {
-  color: var(--text);
-}
-
-.icon-in-folder .icon-label {
-  text-shadow: none;
-}
-
 .icon-in-folder:hover,
 .icon-in-folder:focus-visible {
-  background: #eef3ff;
-  border-color: #d3e0ff;
+  background: var(--gray-light);
+  border-color: var(--black);
 }
 
 .folder-hint {
-  color: #999;
+  color: var(--gray-text);
   font-size: 12px !important;
   margin-top: 12px;
 }
 
 /* Link proiect */
 .project-link {
-  display: inline-block;
-  background: var(--accent);
-  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--black);
+  color: var(--white);
   text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 9px 16px;
   font-size: 14px;
   font-weight: 600;
+  border: 2px solid var(--black);
 }
 
 .project-link:hover {
-  filter: brightness(1.1);
+  background: var(--white);
+  color: var(--black);
+}
+
+.link-icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* Contact */
@@ -254,12 +304,14 @@ html, body {
 }
 
 .contact-list a {
-  color: var(--accent);
-  text-decoration: none;
+  color: var(--black);
+  text-decoration: underline;
 }
 
 .contact-list a:hover {
-  text-decoration: underline;
+  background: var(--black);
+  color: var(--white);
+  text-decoration: none;
 }
 
 /* ===== Taskbar ===== */
@@ -273,25 +325,22 @@ html, body {
   align-items: center;
   gap: 10px;
   padding: 0 12px;
-  background: rgba(15, 18, 28, 0.92);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
+  background: var(--black);
   z-index: 1000;
 }
 
 .start-button {
-  background: var(--accent);
-  color: #fff;
+  background: var(--white);
+  color: var(--black);
   border: none;
-  border-radius: 8px;
-  padding: 7px 14px;
+  padding: 7px 16px;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
 }
 
 .start-button:hover {
-  filter: brightness(1.15);
+  background: var(--gray-mid);
 }
 
 .taskbar-windows {
@@ -302,10 +351,9 @@ html, body {
 }
 
 .taskbar-item {
-  background: rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ddd;
-  border-radius: 7px;
+  background: var(--black);
+  border: 1px solid var(--white);
+  color: var(--white);
   padding: 6px 12px;
   font-size: 12px;
   cursor: pointer;
@@ -313,18 +361,204 @@ html, body {
 }
 
 .taskbar-item:hover {
-  background: rgba(255, 255, 255, 0.20);
+  background: #333333;
 }
 
 .taskbar-item.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+  background: var(--white);
+  color: var(--black);
 }
 
+/* Ceas — colț dreapta jos */
 .taskbar-clock {
-  color: #ccc;
+  color: var(--white);
   font-size: 13px;
   font-variant-numeric: tabular-nums;
   padding: 0 6px;
+  white-space: nowrap;
+  text-transform: capitalize;
+  /* lățime fixă pentru cel mai lung text posibil (ex. „mercoledì 25 settembre · 14:35"),
+     ca elementele din jur să nu se miște când se schimbă limba */
+  width: 235px;
+  text-align: right;
+}
+
+/* ===== Tray — săgeata din colțul dreapta jos ===== */
+.tray {
+  position: relative;
+}
+
+.tray-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--black);
+  border: 1px solid var(--white);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.tray-toggle:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.tray-toggle .tray-icon {
+  transition: transform 0.15s ease;
+}
+
+.tray-toggle.open .tray-icon {
+  transform: rotate(180deg);
+}
+
+.tray-icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* Meniul care se deschide în sus */
+.tray-menu {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: 0;
+  min-width: 190px;
+  background: var(--white);
+  border: 2px solid var(--black);
+  box-shadow: 6px 6px 0 rgba(17, 17, 17, 0.9);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tray-menu[hidden] {
+  display: none;
+}
+
+.tray-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  background: var(--white);
+  border: none;
+  color: var(--black);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tray-item:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* Sub-meniul cu limbi */
+.tray-submenu {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--gray-mid);
+  border-bottom: 1px solid var(--gray-mid);
+  margin: 2px 0;
+}
+
+.tray-submenu[hidden] {
+  display: none;
+}
+
+.tray-submenu button {
+  padding: 8px 10px 8px 36px;
+  background: var(--white);
+  border: none;
+  color: var(--black);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tray-submenu button:hover {
+  background: var(--gray-light);
+}
+
+.tray-submenu button.active {
+  background: var(--black);
+  color: var(--white);
+}
+
+.tray-submenu button.active::before {
+  content: "✓ ";
+}
+
+/* ===== Responsive ===== */
+
+/* Ecrane mici: ferestrele ocupă tot ecranul, iconițele trec pe orizontală */
+@media (max-width: 768px) {
+  .desktop-icons {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .icon {
+    width: 82px;
+    padding: 10px 4px;
+  }
+
+  .window {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100%;
+    min-width: 0;
+    max-width: 100vw;
+    border: none;
+    border-bottom: 2px solid var(--black);
+    box-shadow: none;
+  }
+
+  .window-body {
+    max-height: none;
+    flex: 1;
+    padding: 18px 16px;
+  }
+
+  /* fereastra e mereu pe tot ecranul — fullscreen și drag nu mai au sens */
+  .btn-maximize {
+    display: none;
+  }
+
+  .window-titlebar {
+    cursor: default;
+  }
+
+  .taskbar {
+    gap: 6px;
+    padding: 0 8px;
+  }
+
+  .start-button {
+    padding: 7px 10px;
+  }
+}
+
+/* Telefoane: ceasul trece pe format compact (setat și din JS) */
+@media (max-width: 600px) {
+  .taskbar-clock {
+    width: auto;
+    font-size: 11px;
+    padding: 0 2px;
+  }
 }
