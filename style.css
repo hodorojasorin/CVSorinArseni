@@ -1,0 +1,330 @@
+/* ===== Reset & bază ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --taskbar-height: 48px;
+  --accent: #4f8cff;
+  --window-bg: #ffffff;
+  --titlebar-bg: linear-gradient(180deg, #3a3f4b, #2b2f38);
+  --text: #222;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  color: var(--text);
+  user-select: none;
+}
+
+/* ===== Desktop ===== */
+.desktop {
+  position: relative;
+  height: calc(100vh - var(--taskbar-height));
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(79, 140, 255, 0.35), transparent 55%),
+    radial-gradient(ellipse at 80% 75%, rgba(140, 82, 255, 0.30), transparent 55%),
+    linear-gradient(160deg, #10141f 0%, #1b2233 55%, #232c45 100%);
+  overflow: hidden;
+}
+
+/* ===== Iconițe desktop ===== */
+.desktop-icons {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 1;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 92px;
+  padding: 10px 4px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.icon:hover,
+.icon:focus-visible {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.25);
+  outline: none;
+}
+
+.icon-img {
+  font-size: 40px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.icon-label {
+  font-size: 12px;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  word-break: break-word;
+}
+
+/* ===== Ferestre ===== */
+.window {
+  position: absolute;
+  min-width: 320px;
+  max-width: 90vw;
+  background: var(--window-bg);
+  border-radius: 10px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.window.open {
+  display: flex;
+  animation: window-open 0.18s ease-out;
+}
+
+.window.focused {
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.65);
+}
+
+@keyframes window-open {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.window-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--titlebar-bg);
+  color: #eee;
+  cursor: grab;
+}
+
+.window-titlebar:active {
+  cursor: grabbing;
+}
+
+.window-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.window-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.window-controls button {
+  width: 26px;
+  height: 22px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #eee;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.window-controls button:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.window-controls .btn-close:hover {
+  background: #e0443e;
+  color: #fff;
+}
+
+.window-body {
+  padding: 20px 22px;
+  max-height: 60vh;
+  overflow-y: auto;
+  user-select: text;
+}
+
+.window-body h1 {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.window-body h2 {
+  font-size: 15px;
+  margin: 16px 0 8px;
+}
+
+.window-body p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #777;
+  font-size: 13px !important;
+  margin-bottom: 14px !important;
+}
+
+/* Etichete de competențe / tehnologii */
+.skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.skills li {
+  background: #eef3ff;
+  color: #2b56b5;
+  border: 1px solid #d3e0ff;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Folder cu proiecte */
+.folder-view {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.icon-in-folder {
+  color: var(--text);
+}
+
+.icon-in-folder .icon-label {
+  text-shadow: none;
+}
+
+.icon-in-folder:hover,
+.icon-in-folder:focus-visible {
+  background: #eef3ff;
+  border-color: #d3e0ff;
+}
+
+.folder-hint {
+  color: #999;
+  font-size: 12px !important;
+  margin-top: 12px;
+}
+
+/* Link proiect */
+.project-link {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.project-link:hover {
+  filter: brightness(1.1);
+}
+
+/* Contact */
+.contact-list {
+  list-style: none;
+  font-size: 14px;
+  line-height: 2.2;
+}
+
+.contact-list a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Taskbar ===== */
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--taskbar-height);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  background: rgba(15, 18, 28, 0.92);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.start-button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  filter: brightness(1.15);
+}
+
+.taskbar-windows {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.taskbar-item {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ddd;
+  border-radius: 7px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.taskbar-item:hover {
+  background: rgba(255, 255, 255, 0.20);
+}
+
+.taskbar-item.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.taskbar-clock {
+  color: #ccc;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  padding: 0 6px;
+}

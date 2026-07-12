@@ -3,24 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV — Sorin Arseni</title>
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      max-width: 700px;
-      margin: 40px auto;
-      padding: 0 20px;
-      color: #222;
-    }
-    h1 { margin-bottom: 4px; }
-    .subtitle { color: #666; margin-top: 0; }
-    hr { border: none; border-top: 1px solid #ddd; margin: 24px 0; }
-  </style>
+  <title>Sorin Arseni — Portofoliu</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Sorin Arseni</h1>
-  <p class="subtitle">Curriculum Vitae</p>
-  <hr>
-  <p>Bun venit! Acesta este site-ul meu de CV. Conținutul va fi adăugat în curând.</p>
+
+  <!-- Desktop -->
+  <div class="desktop" id="desktop">
+
+    <!-- Iconițe pe desktop -->
+    <div class="desktop-icons">
+      <button class="icon" data-window="win-despre">
+        <span class="icon-img">👤</span>
+        <span class="icon-label">Despre mine</span>
+      </button>
+      <button class="icon" data-window="win-proiecte">
+        <span class="icon-img">📁</span>
+        <span class="icon-label">Proiectele mele</span>
+      </button>
+      <button class="icon" data-window="win-bibl">
+        <span class="icon-img">📚</span>
+        <span class="icon-label">bibl.ceiti.md</span>
+      </button>
+      <button class="icon" data-window="win-contact">
+        <span class="icon-img">✉️</span>
+        <span class="icon-label">Contact</span>
+      </button>
+    </div>
+
+    <!-- Fereastra: Despre mine -->
+    <section class="window" id="win-despre" data-title="Despre mine" style="top: 80px; left: 180px; width: 460px;">
+      <header class="window-titlebar">
+        <span class="window-title">👤 Despre mine</span>
+        <div class="window-controls">
+          <button class="btn-minimize" title="Minimizează">—</button>
+          <button class="btn-close" title="Închide">✕</button>
+        </div>
+      </header>
+      <div class="window-body">
+        <h1>Sorin Arseni</h1>
+        <p class="subtitle">Web Developer în devenire</p>
+        <p>
+          Salut! Sunt Sorin, pasionat de dezvoltare web. Lucrez cu
+          <strong>HTML</strong>, <strong>CSS</strong> și <strong>JavaScript</strong>
+          și învăț în fiecare zi ceva nou. Acest site este el însuși un proiect:
+          un portofoliu static, construit fără niciun framework.
+        </p>
+        <h2>Competențe</h2>
+        <ul class="skills">
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+          <li>Git</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Fereastra: Proiectele mele -->
+    <section class="window" id="win-proiecte" data-title="Proiectele mele" style="top: 130px; left: 320px; width: 440px;">
+      <header class="window-titlebar">
+        <span class="window-title">📁 Proiectele mele</span>
+        <div class="window-controls">
+          <button class="btn-minimize" title="Minimizează">—</button>
+          <button class="btn-close" title="Închide">✕</button>
+        </div>
+      </header>
+      <div class="window-body">
+        <div class="folder-view">
+          <button class="icon icon-in-folder" data-window="win-bibl">
+            <span class="icon-img">📚</span>
+            <span class="icon-label">bibl.ceiti.md</span>
+          </button>
+        </div>
+        <p class="folder-hint">1 proiect · mai multe în curând…</p>
+      </div>
+    </section>
+
+    <!-- Fereastra: bibl.ceiti.md -->
+    <section class="window" id="win-bibl" data-title="bibl.ceiti.md" style="top: 180px; left: 460px; width: 500px;">
+      <header class="window-titlebar">
+        <span class="window-title">📚 bibl.ceiti.md</span>
+        <div class="window-controls">
+          <button class="btn-minimize" title="Minimizează">—</button>
+          <button class="btn-close" title="Închide">✕</button>
+        </div>
+      </header>
+      <div class="window-body">
+        <h1>Biblioteca CEITI</h1>
+        <p class="subtitle">Primul meu proiect web</p>
+        <p>
+          Site-ul bibliotecii Centrului de Excelență în Informatică și
+          Tehnologii Informaționale (CEITI). Primul proiect real la care am
+          lucrat — o platformă web pentru biblioteca instituției.
+        </p>
+        <h2>Tehnologii</h2>
+        <ul class="skills">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ul>
+        <p>
+          <a class="project-link" href="https://bibl.ceiti.md" target="_blank" rel="noopener">
+            🔗 Vizitează bibl.ceiti.md
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Fereastra: Contact -->
+    <section class="window" id="win-contact" data-title="Contact" style="top: 230px; left: 240px; width: 400px;">
+      <header class="window-titlebar">
+        <span class="window-title">✉️ Contact</span>
+        <div class="window-controls">
+          <button class="btn-minimize" title="Minimizează">—</button>
+          <button class="btn-close" title="Închide">✕</button>
+        </div>
+      </header>
+      <div class="window-body">
+        <h1>Hai să vorbim</h1>
+        <p>Mă găsești la:</p>
+        <ul class="contact-list">
+          <li>📧 <a href="mailto:okarsenisorin@gmail.com">okarsenisorin@gmail.com</a></li>
+          <li>💻 <a href="https://github.com/hodorojasorin" target="_blank" rel="noopener">github.com/hodorojasorin</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Taskbar -->
+  <footer class="taskbar">
+    <button class="start-button" id="start-button">⭐ Start</button>
+    <div class="taskbar-windows" id="taskbar-windows"></div>
+    <div class="taskbar-clock" id="taskbar-clock">--:--</div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
