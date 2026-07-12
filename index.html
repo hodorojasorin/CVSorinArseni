@@ -40,7 +40,7 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='bold' fill='%23fff' text-anchor='middle'%3ESA%3C/text%3E%3C/svg%3E"
     />
 
-    <link rel="stylesheet" href="style.css?v=1.2.2" />
+    <link rel="stylesheet" href="style.css?v=1.2.3" />
   </head>
   <body>
     <!-- Sprite SVG: iconițe monocrome (stil Feather) -->
@@ -102,6 +102,10 @@
         <button class="icon" data-window="win-bibl">
           <svg class="icon-img"><use href="#i-book" /></svg>
           <span class="icon-label">bibl.ceiti.md</span>
+        </button>
+        <button class="icon" data-window="win-main">
+          <svg class="icon-img"><use href="#i-globe" /></svg>
+          <span class="icon-label">sorinarseni.com</span>
         </button>
         <button class="icon" data-window="win-contact">
           <svg class="icon-img"><use href="#i-mail" /></svg>
@@ -174,9 +178,13 @@
               <svg class="icon-img"><use href="#i-book" /></svg>
               <span class="icon-label">bibl.ceiti.md</span>
             </button>
+            <button class="icon icon-in-folder" data-window="win-main">
+              <svg class="icon-img"><use href="#i-globe" /></svg>
+              <span class="icon-label">sorinarseni.com</span>
+            </button>
           </div>
           <p class="folder-hint" data-i18n="projects.hint">
-            1 proiect · mai multe în curând…
+            2 proiecte · mai multe în curând…
           </p>
         </div>
       </section>
@@ -202,15 +210,15 @@
         <div class="window-body">
           <h1 data-i18n="bibl.title">Biblioteca CEITI</h1>
           <p class="subtitle" data-i18n="bibl.subtitle">
-            Primul meu proiect web
+            Biblioteca digitală a Centrului de Excelență în Informatică și
+            Tehnologii Informaționale
           </p>
           <p data-i18n="bibl.p1">
             Platformă web care digitalizează complet biblioteca Centrului de
             Excelență în Informatică și Tehnologii Informaționale (CEITI):
             catalog digital cu căutare și filtrare, rezervări online, panou de
             administrare pentru bibliotecar, chioșc self-service cu
-            autentificare prin PIN sau cod QR și rapoarte PDF printabile. Primul
-            proiect real la care am lucrat.
+            autentificare prin PIN sau cod QR și rapoarte PDF printabile.
           </p>
           <h2 data-i18n="tech">Tehnologii</h2>
           <ul class="skills">
@@ -232,6 +240,54 @@
             >
               <svg class="link-icon"><use href="#i-link" /></svg>
               <span data-i18n="bibl.visit">Vizitează bibl.ceiti.md</span>
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Fereastra: sorinarseni.com -->
+      <section
+        class="window"
+        id="win-main"
+        data-title-key="main"
+        style="top: 200px; left: 400px; width: 500px"
+      >
+        <header class="window-titlebar">
+          <span class="window-title">
+            <svg class="title-icon"><use href="#i-globe" /></svg>
+            <span>sorinarseni.com</span>
+          </span>
+          <div class="window-controls">
+            <button class="btn-minimize" title="Minimize">–</button>
+            <button class="btn-maximize" title="Fullscreen">□</button>
+            <button class="btn-close" title="Close">×</button>
+          </div>
+        </header>
+        <div class="window-body">
+          <h1>sorinarseni.com</h1>
+          <p class="subtitle" data-i18n="main.subtitle">
+            Site-ul meu principal
+          </p>
+          <p data-i18n="main.p1">
+            Cartea mea de vizită online — cine sunt, ce fac și unde mă găsești,
+            într-un design creativ în stil scris de mână. Disponibil în mai
+            multe limbi.
+          </p>
+          <h2 data-i18n="tech">Tehnologii</h2>
+          <ul class="skills">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+          <p>
+            <a
+              class="project-link"
+              href="https://sorinarseni.com"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg class="link-icon"><use href="#i-link" /></svg>
+              <span data-i18n="main.visit">Vizitează sorinarseni.com</span>
             </a>
           </p>
         </div>
@@ -297,6 +353,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=1.2.2"></script>
+    <script src="script.js?v=1.2.3"></script>
   </body>
 </html>
